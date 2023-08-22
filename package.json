@@ -1,0 +1,43 @@
+{
+  "name": "flight-booking-conversational-api",
+  "version": "1.0.0",
+  "description": "An Api which can be integrated into a flight booking conversation bot application to facilitate flight ticket booking. This API allows users to book flights and also retrieve information on booked flights. This API integrates Dialogflow Natural Learning Processing System which enables flexible and dynamic interaction with the conversational API.",
+  "main": "src/index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=production nodemon src/index.js",
+    "start": "node src/index.js",
+    "test": "cross-env NODE_ENV=test jest --detect-openHandles"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ann-tech/flight-booking-conversational-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ann-tech/flight-booking-conversational-api/issues"
+  },
+  "homepage": "https://github.com/Ann-tech/flight-booking-conversational-api#readme",
+  "dependencies": {
+    "@google-cloud/dialogflow": "^6.0.0",
+    "bcrypt": "^5.1.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "helmet": "^7.0.0",
+    "jsonwebtoken": "^9.0.1",
+    "morgan": "^1.10.0",
+    "mysql2": "^3.6.0",
+    "passport": "^0.6.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "sequelize": "^6.32.1",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "jest": "^29.6.2",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  }
+}

@@ -1,0 +1,29 @@
+[
+    {
+        "name": "Ann",
+        "email": "ann@gmail.com",
+        "password": "abc"
+    },
+    {
+        "name": "Ann",
+        "password": "abc"
+    },
+    {
+        "email": "ann@gmail.com",
+        "password": "abc"
+    },
+    {
+        "email": "ann@gmail.com",
+        "password": "c"
+    },
+    {
+        "name": "oscar",
+        "email": "oscar@gmail.com",
+        "password": "efg", 
+        "role": "admin"
+    },
+    {
+        "email": "oscar@gmail.com",
+        "password": "efg"
+    }
+]

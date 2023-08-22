@@ -1,0 +1,11 @@
+[
+    {
+        "flightId": 1,
+        "bookingDate": "August 20, 2023",
+        "status": "pending",
+        "passengerCount": 2
+    },
+    {
+        "status": "confirmed"
+    }
+]
