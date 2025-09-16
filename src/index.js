@@ -44,7 +44,7 @@ app.use('/api/v1/flights', passport.authenticate('jwt', { session: false }), Fli
 //bookings router
 app.use('/api/v1/bookings', passport.authenticate('jwt', { session: false }), BookingRouter);
 
-app.use('/api/v1/conversations', conversationRoute);
+app.use('/api/v1/conversations', passport.authenticate('jwt', { session: false }), conversationRoute);
 
 app.use('/api/v1/webhook', webhookRoute);
 

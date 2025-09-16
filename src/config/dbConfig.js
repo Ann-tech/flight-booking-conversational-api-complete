@@ -5,7 +5,7 @@ const CONFIG = {
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    dialet: "mysql",
+    dialect: "mysql",
 }
 
 module.exports = CONFIG;

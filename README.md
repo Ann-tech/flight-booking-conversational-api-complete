@@ -408,13 +408,14 @@ Here are some sample messages
 
 ```json
 {
-    "message": "Greetings! How can I assist?"
+    "message": "Welcome to FlightBot! How can I help you today?",
+    "type": "text"
 }
 ```
 
 ```json
 {
-    "message": "Are there flights available"
+    "message": "Are there flights going from Enugu to Lagos today?"
 }
 ```
 
@@ -422,22 +423,88 @@ Here are some sample messages
 
 ```json
 {
-    "success": true,
-    "message": "Here is a list of all flights",
+    "message": "Here are the available flights:\naero contractors flight 100: enugu to lagos at 10:06:11 AM - $50000 (10 seats available)",
+    "type": "text",
     "flights": [
         {
             "id": 1,
-            "flightName": "air peace",
-            "departureCity": "kaduna",
+            "flightName": "aero contractors flight 100",
+            "departureCity": "enugu",
             "arrivalCity": "lagos",
-            "departureTime": "2023-08-11T18:47:39.000Z",
-            "arrivalTime": "2023-08-11T18:47:39.000Z",
+            "departureTime": "2025-09-16T09:06:11.000Z",
+            "arrivalTime": "2025-09-16T11:07:27.000Z",
             "availableSeats": 10,
-            "ticketPrice": 50000,
-            "createdAt": "2023-08-12T22:22:26.000Z",
-            "updatedAt": "2023-08-12T22:31:38.000Z"
+            "ticketPrice": 50000
         }
     ]
+}
+```
+
+```json
+{
+    "message": "Are there flights going from Enugu to Lagos tomorrow?"
+}
+```
+
+:point_down: Response
+
+```json
+{
+    "message": "Sorry, I couldn't find any flights matching your criteria.",
+    "type": "text"
+}
+```
+
+```json
+{
+    "message": "Detail about flight 1"
+}
+```
+
+:point_down: Response
+
+```json
+{
+    "message": "Flight: aero contractors flight 100\nRoute: enugu to lagos\nDeparture: 9/16/2025, 10:06:11 AM\nArrival: 9/16/2025, 12:07:27 PM\nAvailable seats: 10\nPrice: $50000\n\nWould you like to book this flight?",
+    "type": "text",
+    "data": {
+        "id": 1,
+        "flightName": "aero contractors flight 100",
+        "departureCity": "enugu",
+        "arrivalCity": "lagos",
+        "departureTime": "2025-09-16T09:06:11.000Z",
+        "arrivalTime": "2025-09-16T11:07:27.000Z",
+        "availableSeats": 10,
+        "ticketPrice": 50000,
+        "createdAt": "2025-09-16T06:10:01.000Z",
+        "updatedAt": "2025-09-16T06:10:01.000Z"
+    }
+}
+```
+
+```json
+{
+    "message": "I would like to book 2 seats in flight 1"
+}
+```
+
+:point_down: Response
+
+```json
+{
+    "message": "Booking confirmed!\n\nBooking #: 1\nFlight: aero contractors flight 100\nRoute: enugu to lagos\nDeparture: 9/16/2025, 10:06:11 AM\nPassengers: 2\nTotal: $100000\nStatus: confirmed",
+    "type": "text",
+    "data": {
+        "bookingDate": "2025-09-16T09:16:06.394Z",
+        "id": 1,
+        "userId": 2,
+        "flightId": 1,
+        "passengerCount": 2,
+        "totalPrice": 100000,
+        "status": "confirmed",
+        "updatedAt": "2025-09-16T09:16:06.395Z",
+        "createdAt": "2025-09-16T09:16:06.395Z"
+    }
 }
 ```
 
