@@ -1,5 +1,12 @@
 # flight-booking-conversational-api
-An Api which can be integrated into a flight booking conversation bot application to facilitate flight ticket booking. This API allows users to book flights and also retrieve information on booked flights. This API integrates Dialogflow Natural Learning Processing System which enables flexible and dynamic interaction with the conversational API.
+A Node.js-based conversational API that enables natural language interactions for flight booking systems using Dialogflow NLP integration.
+
+## Features
+- **Natural Language Processing**: Understands user queries in conversational language
+- **Intent Detection**: Identifies user intentions (flight search, booking, status checks)
+- **Database Integration**: Real-time flight and booking operations
+- **Template-based Responses**: Dynamic, data-driven conversation responses
+- **User Authentication**: Secure user context for personalized experiences
 
 ## Development
 
@@ -413,6 +420,8 @@ Here are some sample messages
 }
 ```
 
+:point_down: Request
+
 ```json
 {
     "message": "Are there flights going from Enugu to Lagos today?"
@@ -440,6 +449,8 @@ Here are some sample messages
 }
 ```
 
+:point_down: Request
+
 ```json
 {
     "message": "Are there flights going from Enugu to Lagos tomorrow?"
@@ -454,6 +465,7 @@ Here are some sample messages
     "type": "text"
 }
 ```
+:point_down: Request
 
 ```json
 {
@@ -481,6 +493,7 @@ Here are some sample messages
     }
 }
 ```
+:point_down: Request
 
 ```json
 {
@@ -518,17 +531,14 @@ Here are some sample messages
 
 ---
 
-## Lessons Learned
-Things implemented during this project
-
-- Test Driven Development
+## This project covers
+- Natural learning processing
 - Database Modelling
 - Database Management
-- Debugging
-- User Authentication
+- Test Driven Development
+- User Authentication 
 - User Authorization
 - Documentation
-- Natural learning processing
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
@@ -541,8 +551,6 @@ Things implemented during this project
 
 - Twitter - [@OnyekaAnn1](https://twitter.com/OnyekaAnn1)
 - email - Onyekaann17@gmail.com
-
-Project Link: [Conversational-api](https://github.com/Ann-tech/flight-booking-conversational-api)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 

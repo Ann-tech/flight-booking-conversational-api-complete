@@ -5,6 +5,7 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+//TODO: move isolation middleware function to auth controller
 authRouter.post('/signup', passport.authenticate('signup', { session: false }), async (req, res, next) => {
     res.json({
         success: true,

@@ -1,3 +1,4 @@
+const httpStatus = require('http-status');
 const logger = require('../logging/logger')
 
 // const handleDuplicateKeyError = (err, res) => {
@@ -31,13 +32,10 @@ const handleValidationError = (err, res) => {
 
 async function errorHandler(err, req, res, next) {
     console.log(err);
-    logger.error("An error has occured")
     logger.error(err.message)
     try {
         if(err.name === 'SequelizeValidationError' || err.name == 'SequelizeUniqueConstraintError') return handleValidationError(err, res);
-
-        if (err.message == "email or password is incorrect") return res.status(400).json({success: false, message: err.message})
-        throw err;
+        return res.status(err?.statusCode || httpStatus.status.INTERNAL_SERVER_ERROR).json({success: false, message: err.message})
     } catch(err) {
         res.status(500).json({success: false, message: 'An unknown error occurred.'});
     }

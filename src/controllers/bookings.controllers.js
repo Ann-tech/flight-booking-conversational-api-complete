@@ -1,87 +1,53 @@
 const https = require('https');
-
 const { Booking } = require('../models/db.connect');
 const { Flight } = require('../models/db.connect');
+const { getAllBookings, getBookedFlight, bookFlight, updateBookingStatus } = require('../services/booking.service');
 
+//TODO - move payment config to payment helper
 const paystackConfig = require('../config/paystackConfig');
 
 async function httpGetAllBookings(req, res, next) {
     try {
-        const userId = req.user.id;
-        const bookings = await Booking.findAll({
-            where: {
-                userId
-            }
-        });
+        const bookings = await getAllBookings({ userId: req.user.id });
+
         res.status(200).json({success: true, bookings })
     } catch(err) {
-        console.log(err);
         next(err);
     }
 }
 
 async function httpGetBookedFlight(req, res, next) {
     try {
-        const id = req.params.id;
-        const userId = req.user.id;
-
-        const booking = await Booking.findOne({
-            where: {
-                id,
-                userId
-            }
-        });
-
-        if (!booking) return res.status(404).json( {success: false, message: "Booking with such id doesn't exits"})
+        const booking = await getBookedFlight({ id: req.params.id, userId: req.user.id });
 
         res.status(200).json({success: true, booking})
     } catch(err) {
-        console.log(err);
         next(err);
     }
 }
 
+//TODO - return checkout url after booking
 async function httpBookFlight(req, res, next) {
     try {
-        const userId = req.user.id;
-        const flightId = req.body.flightId;
-
-        const flight = await Flight.findByPk(flightId);
-        if (!flight) return res.status(404).json({success: false, message: "flight with such id doesn't exist"})
-
-        const totalPrice = flight.ticketPrice * req.body.passengerCount;
-        const booking = await Booking.create({...req.body, userId, totalPrice});
+        await bookFlight({ userId: req.user.id, flightId: req.body.flightId });
 
         res.status(201).json({success: true, message: 'flight successfully booked, kindly make payment to confirm'});
     } catch(err) {
-        console.log(err);
         next(err);
     }
 }
 
 async function httpUpdateBookingStatus(req, res, next) {
     try {
-        const id = req.params.id;
-        const userId = req.user.id;
-
-        const { status } = req.body;
-
-        if (status === 'confirmed') return res.status(400).json({status: false, message: "Cannot update status until payment is made"});
-
-        const booking = await Booking.update({ status }, {
-            where: {
-                id,
-                userId
-            }
-        });
+        await updateBookingStatus({ id: req.params.id, userId: req.user.id, status: req.body.status });
 
         res.status(200).json({success: true, message: `booking status successfully updated ${status}`})
     } catch(err) {
-        console.log(err);
         next(err);
     }
 }
 
+//TODO - update payment status after confirmation via webhook
 async function httpMakePaymentById(req, res, next) {
     const id = req.params.id;
     const userId = req.user.id;
